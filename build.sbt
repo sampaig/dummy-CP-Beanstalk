@@ -7,10 +7,10 @@ version := "latest"
 
 scalaVersion := "2.11.8"
 
-packageName in Docker := "sample-repository"
+packageName in Docker := "docker-beanstalk"
 dockerExposedPorts := Seq(5000)
 dockerUpdateLatest := true
-dockerRepository := Some("331456484691.dkr.ecr.eu-west-1.amazonaws.com/docker-beanstalk")
+dockerRepository := Some("331456484691.dkr.ecr.eu-west-1.amazonaws.com")
 
 
 libraryDependencies ++= Seq(
