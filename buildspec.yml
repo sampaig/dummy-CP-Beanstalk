@@ -22,6 +22,7 @@ phases:
       - $(aws ecr get-login --no-include-email --region us-east-1)
   build:
     commands:
+      - sbt sbt-version
       - sbt docker:publish
   post_build:
     commands:
