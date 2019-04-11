@@ -2,7 +2,7 @@
   "AWSEBDockerrunVersion": 2,
   "volumes": [
     {
-      "name": "java-app",
+      "name": "php-app",
       "host": {
         "sourcePath": "/var/app/current/php-app"
       }
@@ -16,25 +16,19 @@
   ],
   "containerDefinitions": [
     {
-      "name": "java-app",
-      "image": "331456484691.dkr.ecr.eu-west-1.amazonaws.com/docker-beanstalk:latest",
+      "name": "php-app",
+      "image": "php:fpm",
       "environment": [
         {
           "name": "Container",
-          "value": "Java"
+          "value": "PHP"
         }
       ],
       "essential": true,
       "memory": 128,
-      "portMappings": [
-        {
-          "hostPort": 5000,
-          "containerPort": 5000
-        }
-      ],
       "mountPoints": [
         {
-          "sourceVolume": "java-app",
+          "sourceVolume": "php-app",
           "containerPath": "/var/www/html",
           "readOnly": true
         }
@@ -52,11 +46,11 @@
         }
       ],
       "links": [
-        "java-app"
+        "php-app"
       ],
       "mountPoints": [
         {
-          "sourceVolume": "java-app",
+          "sourceVolume": "php-app",
           "containerPath": "/var/www/html",
           "readOnly": true
         },
