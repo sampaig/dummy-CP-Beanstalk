@@ -1,0 +1,23 @@
+version: '3'
+services:
+  web:
+    image: "watchtower"
+    container_name: watchtower
+    command: bash -c "npm install && npm test"
+    environment: 
+      - "REDIS_CLUSTER_IP=redisdb"
+    working_dir: /usr/local/watchtower-api
+    build:
+      context: .
+    depends_on: 
+    - redis
+    volumes: 
+    - .:/usr/local/watchtower-api
+    links: 
+    - redis
+
+  redis:
+    image : redis 
+    container_name: redisdb
+
+    
